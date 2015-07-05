@@ -124,3 +124,4 @@
    (kill-buffer (current-buffer)))
 
 (global-set-key [f9] 'mk-kill-buffer)
+
