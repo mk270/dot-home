@@ -99,17 +99,15 @@
 									indent-tabs-mode nil)))
 
 ; Language: Ada
-
-(setq ada-auto-case nil)
-(setq ada-indent-to-open-paren nil)
-(setq ada-case-keyword 'downcase-word)
-(setq ada-case-attribute 'downcase-word)
-(setq ada-case-identifier 'downcase-word)
-
 (add-hook 'ada-mode-hook (lambda ()
-						   (setq-default indent-tabs-mode nil)))
-(add-hook 'ada-mode-hook (lambda ()
-                            (local-set-key (kbd "RET") 'newline)))
+						   (setq-default indent-tabs-mode nil)
+                           (local-set-key (kbd "RET") 'newline)
+                           (setq ada-auto-case t)
+                           (setq ada-indent-to-open-paren nil)
+                           (setq ada-case-keyword 'downcase-word)
+                           (setq ada-case-attribute 'downcase-word)
+                           (setq ada-case-identifier 'ada-loose-case-word)
+                           (setq ada-label-indent -4)))
 ;
 (defun mk-atoll-setup ()
   "Set up directories for Atoll development"
