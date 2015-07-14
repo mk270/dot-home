@@ -108,7 +108,8 @@
 
 (add-hook 'ada-mode-hook (lambda ()
 						   (setq-default indent-tabs-mode nil)))
-
+(add-hook 'ada-mode-hook (lambda ()
+                            (local-set-key (kbd "RET") 'newline)))
 ;
 (defun mk-atoll-setup ()
   "Set up directories for Atoll development"
