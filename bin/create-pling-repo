@@ -19,3 +19,5 @@ git remote add pling ssh://$REMOTE/\~/$REPO
 echo suggested: 
 echo ''
 echo git push pling master
+
+git push pling master

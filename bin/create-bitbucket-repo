@@ -5,15 +5,18 @@ BB_USER=mk270
 set -eu
 
 REPO=$(basename $(pwd))
+REMOTE=bitbucket
 
 if [ ! -d .git ]; then
 	echo 'No .git dir - is this a git repo toplevel dir?'
 	exit 1
 fi
 
-curl -k -X POST --user "${BB_USER}:${BB_PASSWD}" \
-	https://api.bitbucket.org/1.0/repositories \
-	-d "name=${REPO}"
+curl --fail -k -X POST --user "${BB_USER}:${BB_PASSWD}" \
+	-H "Content-Type: application/json" \
+	https://api.bitbucket.org/2.0/repositories/${BB_USER}/${REPO} \
+	-d '{ "is_private": "true", "scm": "git" }'
 
-git remote add origin git@bitbucket.org:${BB_USER}/${REPO}.git
+git remote add ${REMOTE} git@bitbucket.org:${BB_USER}/${REPO}.git
+git push ${REMOTE} --all
 
