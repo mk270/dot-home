@@ -1,0 +1,4 @@
+stash () 
+{ 
+    declare -f $1 > ~/.stash-bash/$1
+}

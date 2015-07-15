@@ -1,0 +1,11 @@
+separate-downloads () 
+{ 
+    cd ~/Downloads
+    for x in *;
+    do
+        ext=$(extension "$x");
+        if [ -f "$x" -a -n "$ext" ]; then
+            move_by_type "$x" "$ext";
+        fi;
+    done
+}

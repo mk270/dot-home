@@ -1,0 +1,4 @@
+recordvoice () 
+{ 
+    arecord -f S16_LE -c1 -r22050
+}

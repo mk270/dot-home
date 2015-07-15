@@ -1,0 +1,8 @@
+move_by_type () 
+{ 
+    local filename=$1;
+    local filetype=$2;
+    dest_dir=~/Downloads/by_type/"$filetype";
+    mkdir -p "$dest_dir";
+    mv -i -- "$filename" "$dest_dir"
+}

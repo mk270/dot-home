@@ -1,0 +1,4 @@
+extension () 
+{ 
+    echo "$*" | awk -F. 'NF > 1 {print $NF}'
+}
