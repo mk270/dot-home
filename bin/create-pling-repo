@@ -1,0 +1,21 @@
+#!/bin/bash
+
+REMOTE=pling
+
+set -eu
+
+if ! git log >/dev/null 2>/dev/null; then
+	echo "Not in a git repository"
+	exit 1
+fi
+
+name=$(basename $(pwd))
+
+REPO=repos/$name
+
+ssh $REMOTE mkdir $REPO
+ssh $REMOTE git --git-dir $REPO init
+git remote add pling ssh://$REMOTE/\~/$REPO
+echo suggested: 
+echo ''
+echo git push pling master

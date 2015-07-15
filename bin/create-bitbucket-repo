@@ -1,0 +1,19 @@
+#!/bin/bash
+
+BB_USER=mk270
+
+set -eu
+
+REPO=$(basename $(pwd))
+
+if [ ! -d .git ]; then
+	echo 'No .git dir - is this a git repo toplevel dir?'
+	exit 1
+fi
+
+curl -k -X POST --user "${BB_USER}:${BB_PASSWD}" \
+	https://api.bitbucket.org/1.0/repositories \
+	-d "name=${REPO}"
+
+git remote add origin git@bitbucket.org:${BB_USER}/${REPO}.git
+

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -eu
+
+filename="$1"
+
+is_gif () {
+	echo "$1" | grep -q '\.gif$'
+}
+
+if is_gif "$filename"; then
+	gifview -a "$filename"
+else
+	qiv "$filename"
+fi
+

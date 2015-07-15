@@ -1,0 +1,18 @@
+#!/bin/bash
+
+GITHUB_USER=mk270
+
+set -eu
+
+REPO=$(basename $(pwd))
+
+if [ ! -d .git ]; then
+	echo 'No .git dir - is this a git repo toplevel dir?'
+	exit 1
+fi
+
+curl -u "${GITHUB_USER}:${GITHUB_PASSWD}" https://api.github.com/user/repos \
+	-d '{"name":"'${REPO}'"}' > /dev/null
+
+git remote add origin ssh://github/${GITHUB_USER}/${REPO}.git
+
