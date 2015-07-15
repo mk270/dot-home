@@ -102,9 +102,11 @@ fi
 #	. /etc/bash_completion
 #fi
 
-eval `opam config env`
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+if [ -f /usr/local/bin/opam ]; then
+    eval `opam config env`
+    if [ -d "$HOME/bin" ] ; then
+        PATH="$HOME/bin:$PATH"
+    fi
 fi
 
 if [ -d "$HOME/npm/bin" ] ; then
