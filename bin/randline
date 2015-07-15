@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+
+# a pipe; take STDIN and print it out again, randomlised by lines
+
+( @lines = <> );
+
+srand;
+
+$total = ( @lines );
+
+foreach my $x ( 0 .. $#lines )
+{
+        my( $a ) = rand( $total );
+        my( $tmp ) = $lines[ $x ];
+        $lines[ $x ] = $lines[ $a ];
+        $lines[ $a ] = $tmp;
+}
+
+print @lines;
+
