@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -eu
+
+PHONE_MAC=$(cat ~/.phone-mac)
+
+cd ~
+syncml-ds-tool -b $PHONE_MAC 11 \
+	--slow-sync text/x-vcard sdt/contacts Contacts \
+	--wbxml --identifier "PC Suite"
