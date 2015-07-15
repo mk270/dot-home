@@ -1,0 +1,6 @@
+
+for fn in $( \
+        (cd ~/.stash-bash; ls | grep -v ^_ ; cat _depends) | tsort ); do
+        . ~/.stash-bash/$fn
+done
+
