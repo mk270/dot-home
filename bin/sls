@@ -1,0 +1,12 @@
+#!/usr/bin/python
+
+# print files in directory, sorted by length
+
+import os
+
+def run():
+    def cmp_len(a, b): return cmp(len(a), len(b))
+    print "\n".join(sorted(os.listdir(os.getcwd()), cmp_len))
+
+if __name__ == '__main__':
+    run()

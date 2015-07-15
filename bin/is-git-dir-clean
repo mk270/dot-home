@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -eu
+
+git status | grep -q "nothing to commit, working directory clean"
