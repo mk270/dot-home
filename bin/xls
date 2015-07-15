@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gnumeric "$@" >/dev/null 2>&1 # sod you, Gnome

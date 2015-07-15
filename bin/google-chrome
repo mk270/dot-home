@@ -1,0 +1,4 @@
+#!/bin/bash
+
+LD_PRELOAD=~/Src/noraise-chrome/libXNoRaise.so /usr/bin/google-chrome "$@"
+

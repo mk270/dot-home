@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+import time
+
+if __name__ == '__main__':
+	start = time.time()
+	while True:
+		now = time.time()
+		offset = int(now - start)
+		mins = offset / 60
+		secs = offset % 60
+		print "%0.2d:%0.2d" % (mins, secs)		
+		time.sleep(1)
