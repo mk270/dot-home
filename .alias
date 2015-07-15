@@ -32,3 +32,5 @@ white-add () { git diff --check && git add -p || echo dirty ; }
 connect-wifi () { nmcli dev wifi connect "$@" ; }
 
 all-wifi () { nmcli dev wifi ; }
+
+alias y2="~/Src/scagger/y2"
