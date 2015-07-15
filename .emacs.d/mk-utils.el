@@ -2,15 +2,15 @@
   "Convert data from inside of HTML TT tag to preformatted markdown"
   (apply 'concat (mapcar (lambda (x) (concat "    " x "\n"))
                          (split-string data "\n"))))
-  
+
 (defun mk-replace-html-preformatted-with-markdown ()
   "Replace text in <PRE><TT>.*</TT></PRE> with markdown-formatted code"
   (interactive)
   (save-excursion
     (let ((pattern "<PRE><TT>\\([\0-\377[:nonascii:]]*?\\)</TT></PRE>"))
-      (perform-replace pattern 
+      (perform-replace pattern
                        `(,(lambda (data count)
-                            (mk-to-preformatted-markdown (match-string 1)))) 
+                            (mk-to-preformatted-markdown (match-string 1))))
                        nil t nil nil nil (point-min) (point-max)))))
 
 (defun mk-underline-header (data)
@@ -38,7 +38,7 @@
         (replace-match (concat (match-string 1) " ("))))
     (indent-region (point-min) (point-max))
     (save-buffer)))
-                   
+
 (defun mk-fix-ada-dot-ranges ()
   "Insert a space around range ellipses Ada source buffer"
   (interactive)
@@ -57,8 +57,18 @@
     (insert " ")
     (left-char 2)
     (insert " ")))
-  
+
 ;(global-set-key [f6] 'mk-surround-with-spaces)
+
+(defun mk-kill-to-regexp-match (regexp)
+  "Delete text from point until the beginning of the next text to match regexp"
+  (interactive)
+  (save-excursion
+    (let ((beg (point)))
+      (if (re-search-forward regexp)
+          (progn
+            (left-char (length (match-string 0)))
+            (kill-region beg (point)))))))
 
 (defun mk-trim-leading-whitespace (s)
   "Remove whitespace from beginning of string s"
@@ -66,7 +76,7 @@
 
 (defun mk-ada-reformat-arguments ()
   "Reformat Ada function/procedure arguments, Muen-style"
-  (interactive)   
+  (interactive)
   (save-excursion
     (defun mk-advance-to-semi-or-rparen ()
       (re-search-forward "\\([);]\\)")
@@ -76,6 +86,7 @@
     (ada-previous-procedure)
     (forward-word)
     (forward-sexp)
+    (mk-kill-to-regexp-match "(")
     (insert "\n")
     (ada-tab)
 
@@ -86,7 +97,7 @@
         (re-search-forward "[^\\s-]")
         (delete-region beg (point)))
       (ada-tab))
-    
+
     (let ((end (point)))
       (search-backward "(")
       (forward-char)
@@ -95,7 +106,7 @@
              (arglines (mapcar 'mk-trim-leading-whitespace
                         (split-string argtext ";\\s-*" nil)))
              (max-length
-              (apply 'max (mapcar 
+              (apply 'max (mapcar
                            (lambda (s) (length (car (split-string s " *:"))))
                            arglines)))
              (offset (+ max-length 1)))
@@ -111,6 +122,6 @@
                      (re-search-forward "[a-zA-Z]")
                    nil)))))
     (forward-char)
+    (mk-kill-to-regexp-match "\\(is\\|return\\)")
     (insert "\n")
     (ada-tab)))
-
