@@ -1,0 +1,34 @@
+check_battery () { upower -i /org/freedesktop/UPower/devices/battery_BAT0; }
+
+alias watch='watch -n 1'
+
+stash () { ~/../.i/bin/stash "$@"; }
+
+serve () { python -m SimpleHTTPServer; }
+
+gh-clone () { git clone ssh://github/$1 ; }
+
+unclean-git-subdirs () {
+	for x in *
+    do 
+      if [ -d "$x/.git" ]; then 
+        (cd $x; is-git-dir-clean || echo $x)
+      fi
+    done 
+}
+
+randline () { perl -MList::Util -e 'print List::Util::shuffle <>'; }
+
+sls () { ls | perl -e 'print sort { length($a) <=> length($b) } <>' ; }
+
+vocab () { local word="$*"; echo "$word" >> ~/.vocab; }
+
+obpm () { mysql -u root obp_stats "$@" ; }
+
+add-new-wifi () { ssh -X root@localhost nm-connection-editor; }
+
+white-add () { git diff --check && git add -p || echo dirty ; }
+
+connect-wifi () { nmcli dev wifi connect "$@" ; }
+
+all-wifi () { nmcli dev wifi ; }
