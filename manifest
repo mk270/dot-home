@@ -3,5 +3,6 @@
 .bash_logout
 .emacs
 .emacs.d/mk-utils.el
+.emacs.d/column-marker.el
 .stash-bash
 bin
