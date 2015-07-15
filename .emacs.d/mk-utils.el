@@ -78,6 +78,8 @@
     (forward-sexp)
     (insert "\n")
     (ada-tab)
+
+    ; split arg groups each onto own line
     (while (mk-advance-to-semi-or-rparen)
       (insert "\n")
       (let ((beg (point)))
@@ -88,6 +90,7 @@
     (let ((end (point)))
       (search-backward "(")
       (forward-char)
+      ; find the longest identifier list
       (let* ((argtext (buffer-substring (point) end))
              (arglines (mapcar 'mk-trim-leading-whitespace
                         (split-string argtext ";\\s-*" nil)))
@@ -98,6 +101,7 @@
              (offset (+ max-length 1)))
         (search-backward "(")
         (forward-char)
+        ; adjust the identifiers's trailing whitespace
         (while (progn
                  (let ((spaces (- offset (length (thing-at-point 'symbol)))))
                    (re-search-forward "\\(\\s-*?\\):")
