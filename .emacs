@@ -78,10 +78,18 @@
 (global-set-key (kbd "C-x 8") 'xah-new-empty-buffer)
 
 
-; for FUCK's SAKE can developers not leave defaults the fuck ALONE?!
+; can developers not leave defaults the hell ALONE?!
 (when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
 (setq electric-indent-mode -1) 
 (setq-default c-electric-flag nil)
+
+; Language: Inform
+(autoload 'inform-mode "inform-mode" "Inform editing mode." t)
+(autoload 'inform-maybe-mode "inform-mode" "Inform/C header editing mode.")
+(setq auto-mode-alist
+      (append '(("\\.h\\'"   . inform-maybe-mode)
+                ("\\.inf\\'" . inform-mode))
+               auto-mode-alist))
 
 ; Language: Java
 (add-hook 'java-mode-hook (lambda ()
@@ -97,6 +105,13 @@
 (add-hook 'tuareg-mode-hook (lambda ()
 							  (setq tuareg-default-indent 2
 									indent-tabs-mode nil)))
+; FIXME
+(setq completion-ignored-extensions
+      (cons ".annot" completion-ignored-extensions))
+(setq completion-ignored-extensions
+      (cons ".cmx" completion-ignored-extensions))
+(setq completion-ignored-extensions
+      (cons ".cmi" completion-ignored-extensions))
 
 ; Language: Ada
 (add-hook 'ada-mode-hook (lambda ()
