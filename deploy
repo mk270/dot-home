@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -eu
+
+for path in $(cat $(dirname $0)/manifest)
+do
+    (cd ~ ; echo "rm -rf -- $path && ln -s ~/.home/$path $path")
+done
+
+

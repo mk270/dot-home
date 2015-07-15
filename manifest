@@ -1,0 +1,7 @@
+.alias
+.bashrc
+.bash_logout
+.emacs
+.emacs.d/mk-utils.el
+.stash-bash
+bin

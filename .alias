@@ -34,3 +34,21 @@ connect-wifi () { nmcli dev wifi connect "$@" ; }
 all-wifi () { nmcli dev wifi ; }
 
 alias y2="~/Src/scagger/y2"
+
+alias wget='wget --no-check-certificate'
+
+alias dos2unix='dos2unix -q'
+
+map () { cmd=$1; shift; for x in $*; do $cmd $x; done; }
+
+mute () { amixer set Master mute; }
+
+unmute () { amixer set Master unmute; }
+
+lmap () { cmd=$1; shift; for x in $(cat $1); do $cmd $x; done; }
+
+alias w3m='w3m -no-mouse'
+
+alias tda='tda -p medium'
+
+spark () { ( echo "$@"; echo "" ) >> ~/.spark; }
