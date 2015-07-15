@@ -1,0 +1,5 @@
+#!/bin/bash
+
+xterm -e watch iwconfig &
+xterm -e watch route -n &
+xterm -e ~/bin/pause ~/bin/essids & 

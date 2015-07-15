@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu
+SNAME=erlrepl_$$
+
+exec erl -sname $SNAME "$@"
+

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo iwlist wlan0 scan | \
+awk '/ESSID/ { print substr($0,28,length($0) - 28); }' | \
+sort -u
