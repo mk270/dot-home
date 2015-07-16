@@ -10,7 +10,7 @@ filename = ".w.db"
 
 def save(datestamp, weight):
     uid = os.getuid()
-    home = pwd.getuid(uid).pw_dir
+    home = pwd.getpwuid(uid).pw_dir
     path = os.path.join(home, filename)
 
     db = sqlite.connect(path)
