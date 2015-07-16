@@ -16,7 +16,7 @@ def save(datestamp, weight):
     db = sqlite.connect(path)
     c = db.cursor()
     sql = "INSERT INTO wlog (weight, day) VALUES (?,?);"
-    c.execute((weight, datestamp))
+    c.execute(sql, (weight, datestamp))
     db.commit()
     c.close()
     db.close()
