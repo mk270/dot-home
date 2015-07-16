@@ -104,9 +104,10 @@ fi
 
 if [ -f /usr/local/bin/opam ]; then
     eval `opam config env`
-    if [ -d "$HOME/bin" ] ; then
-        PATH="$HOME/bin:$PATH"
-    fi
+fi 
+
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
 fi
 
 if [ -d "$HOME/npm/bin" ] ; then
