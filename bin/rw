@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+
+from sqlite3 import dbapi2 as sqlite
+import sys
+import datetime
+import os
+import pwd
+
+filename = ".w.db"
+
+def save(datestamp, weight):
+    uid = os.getuid()
+    home = pwd.getuid(uid).pw_dir
+    path = os.path.join(home, filename)
+
+    db = sqlite.connect(path)
+    c = db.cursor()
+    sql = "INSERT INTO wlog (weight, day) VALUES (?,?);"
+    c.execute((weight, datestamp))
+    db.commit()
+    c.close()
+    db.close()
+
+def run():
+    _, arg = sys.argv
+    save(datetime.datetime.today().strftime("%Y-%m-%d"),
+         "%2.1f" % float(arg))
+
+if __name__ == '__main__':
+    run()
