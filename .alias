@@ -58,3 +58,4 @@ new-nonce-passwd () {
         (cd ~/Auth && pwgen -1 -s | tee $filename)
 }
 
+gpom () { git push origin master; }
