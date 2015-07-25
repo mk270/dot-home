@@ -58,3 +58,18 @@ new-nonce-passwd () {
         (cd ~/Auth && pwgen -1 -s | tee $filename)
 }
 
+email-add-alias () {
+        local alias_file=/etc/mail/aliases/no.ucant.org
+        TAG=$1
+        if [ -n "$TAG" ]; then
+                if ! grep -q "^mk270-${TAG}:" $alias_file; then
+                        echo "mk270-${TAG}: mk" >> $alias_file
+                        echo "Alias for $TAG added:"
+                        echo "mk270-${TAG}@no.ucant.org"
+                else
+                        echo Such an alias already seems to exist
+                fi
+        else
+                echo Usage: email-add-alias TAG
+        fi
+}
