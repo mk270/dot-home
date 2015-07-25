@@ -139,3 +139,4 @@
 
 (global-set-key [f9] 'mk-kill-buffer)
 (global-set-key [f8] 'whitespace-mode)
+(global-set-key [f11] 'bury-buffer)
