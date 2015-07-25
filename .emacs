@@ -120,7 +120,7 @@
                            (setq ada-auto-case t)
                            (setq ada-indent-to-open-paren nil)
                            (setq ada-case-keyword 'downcase-word)
-                           (setq ada-case-attribute 'downcase-word)
+                           (setq ada-case-attribute 'ada-capitalize-word)
                            (setq ada-case-identifier 'ada-loose-case-word)
                            (setq ada-label-indent -4)))
 ;
