@@ -5,6 +5,10 @@
 (setq initial-scratch-message "")
 (setq initial-major-mode (quote text-mode))
 
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
 ; Force the messages to 0, and kills the *Messages* buffer
 ;  - thus disabling it on startup.
 (setq-default message-log-max nil)
