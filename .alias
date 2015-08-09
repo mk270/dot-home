@@ -51,7 +51,7 @@ alias w3m='w3m -no-mouse'
 
 alias tda='tda -p medium'
 
-spark () { ( echo "$@"; echo "" ) >> ~/.spark; }
+spark () { ( echo "$@"; echo "" ) >> ~/Src/ideas-and-gags/spark; }
 
 new-nonce-passwd () {
         local filename="$1"
@@ -75,3 +75,11 @@ email-add-alias () {
                 echo Usage: email-add-alias TAG
         fi
 }
+
+capture-to-pling-git () {
+	git init
+	git add .
+	git commit -m "initial commit"
+	create-pling-repo
+}
+
