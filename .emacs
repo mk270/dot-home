@@ -123,13 +123,20 @@
                            (setq ada-case-attribute 'ada-capitalize-word)
                            (setq ada-case-identifier 'ada-loose-case-word)
                            (setq ada-label-indent -4)))
-;
+
 (defun mk-atoll-setup ()
   "Set up directories for Atoll development"
   (interactive)
   (progn
     (setq default-directory "~/Src/atoll/apps/atoll/src")
     (setq compile-command "cd ~/Src/atoll && make")))
+
+(defun mk-whitaker-setup ()
+  "Set up directories for Whitaker's WORDS development"
+  (interactive)
+  (progn
+    (setq default-directory "~/Src/whitakers-words/src/commands/")
+    (setq compile-command "cd ~/Src/whitakers-words && gprbuild -Pwords")))
 
 ; enable single-keystroke kill buffer
 (defun mk-kill-buffer ()
