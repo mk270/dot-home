@@ -13,5 +13,4 @@ do-date () {
 datestamp=$(do-date)
 count=$(do-count)
 
-echo "$datestamp
-      $count" >> ~/inboxlen.log
+echo "$datestamp $count" >> ~/inboxlen.log
