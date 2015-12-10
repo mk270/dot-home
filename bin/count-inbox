@@ -10,7 +10,8 @@ do-date () {
   /bin/date +%Y-%m-%d
 }
 
-DATE=$(do-date)
-COUNT=$(do-count)
+datestamp=$(do-date)
+count=$(do-count)
 
-echo "$date $count" >> ~/inboxlen.log
+echo "$datestamp
+      $count" >> ~/inboxlen.log
