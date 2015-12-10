@@ -8,8 +8,14 @@ is_gif () {
 	echo "$1" | grep -q '\.gif$'
 }
 
+is_mp4 () {
+	echo "$1" | grep -q '\.mp4$'
+}
+
 if is_gif "$filename"; then
 	gifview -a "$filename"
+elif is_mp4 "$filename"; then
+	avplay "$filename"
 else
 	qiv "$filename"
 fi
