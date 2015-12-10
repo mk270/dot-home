@@ -53,6 +53,8 @@ alias tda='tda -p medium'
 
 spark () { ( echo "$@"; echo "" ) >> ~/Src/ideas-and-gags/spark; }
 
+gag ()   { ( echo "$@"; echo "" ) >> ~/Src/ideas-and-gags/jokes; }
+
 new-nonce-passwd () {
         local filename="$1"
         (cd ~/Auth && pwgen -1 -s | tee $filename)
@@ -83,3 +85,15 @@ capture-to-pling-git () {
 	create-pling-repo
 }
 
+music-rand () {
+	(cd ~/Music/trans; \
+	mpg123 $(find . -type f -mtime -300 | randline))
+}
+
+snmr () {
+	sudo service network-manager restart
+}
+
+wt () {
+	while true; do "$@"; sleep 1; done
+}
