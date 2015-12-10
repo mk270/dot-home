@@ -7,7 +7,7 @@ do-count () {
 }
 
 do-date () {
-  /usr/bin/date +%Y-%m-%d
+  /bin/date +%Y-%m-%d
 }
 
 DATE=$(do-date)
