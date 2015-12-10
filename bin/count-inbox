@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -eu
+
+do-count () {
+  /usr/bin/from -f ~/mail/Pers2 | wc -l
+}
+
+do-date () {
+  /usr/bin/date +%Y-%m-%d
+}
+
+DATE=$(do-date)
+COUNT=$(do-count)
+
+echo "$date $count" >> ~/inboxlen.log
