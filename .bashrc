@@ -118,6 +118,10 @@ fi
 #    PATH="${PATH}:/usr/local/gnat2014/bin"
 #fi
 
+if [ -d "/usr/local/go/bin" ]; then
+    PATH=${PATH}:/usr/local/go/bin
+fi
+
 export PATH=${PATH}:~/.gem/ruby/1.9.1/bin
 
 export IPOD_MOUNTPOINT=/mnt/ipod
