@@ -122,6 +122,10 @@ if [ -d "/usr/local/go/bin" ]; then
     PATH=${PATH}:/usr/local/go/bin
 fi
 
+if [ -d "$HOME/.cask/bin" ]; then
+    PATH=${PATH}:$HOME/.cask/bin
+fi
+
 export PATH=${PATH}:~/.gem/ruby/1.9.1/bin
 
 export IPOD_MOUNTPOINT=/mnt/ipod

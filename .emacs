@@ -150,3 +150,11 @@
 (global-set-key [f9] 'mk-kill-buffer)
 (global-set-key [f8] 'whitespace-mode)
 (global-set-key [f11] 'bury-buffer)
+
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/"))
+(package-initialize) 
+
+(require 'cask "~/.cask/cask.el")
+(cask-initialize)
