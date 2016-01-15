@@ -1,0 +1,26 @@
+#!/usr/bin/env python
+
+import datetime
+import sys
+import calendar
+
+def run():
+    try:
+        _, month, year = sys.argv
+    except:
+        print >>sys.stderr, "Usage: newmonth month year"
+
+    m = int(month)
+    y = int(year)
+
+    print "\n%s %d\n" % (calendar.month_name[m].upper(), y)
+    
+    for day in xrange(0, calendar.monthrange(y, m)[1]):
+        d = day + 1
+        date = datetime.datetime(y, m, d)
+        w = date.strftime('%a')
+        sun = {True: "\n", False: ""}[date.weekday() == 6]
+        print "%s %0.2d:%s" % (w, d, sun)
+
+if __name__ == '__main__':
+    run()
