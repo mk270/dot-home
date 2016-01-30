@@ -25,7 +25,7 @@
 (setq auto-save-default nil)
 (setq backup-by-copying t)
 
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
 ; indentation
 (setq css-electric-keys nil)

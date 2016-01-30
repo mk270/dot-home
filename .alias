@@ -87,7 +87,7 @@ capture-to-pling-git () {
 
 music-rand () {
 	(cd ~/Music/trans; \
-	mpg123 $(find . -type f -mtime -300 | randline))
+	mpg123 $(find . -type f -mtime -600 | randline))
 }
 
 snmr () {
