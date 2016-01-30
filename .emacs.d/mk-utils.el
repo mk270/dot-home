@@ -125,3 +125,44 @@
     (mk-kill-to-regexp-match "\\(is\\|return\\)")
     (insert "\n")
     (ada-tab)))
+
+(defun mk-count-lines-left-to-do ()
+  "Print the number of lines left between two markers"
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (search-forward "// BEGIN craziness")
+    (let ((start-line (line-number-at-pos)))
+      (search-forward "// END craziness")
+      (let* ((end-line (line-number-at-pos))
+             (difference (- end-line start-line)))
+        (message (concat "Lines remaining: "
+                         (number-to-string difference)))))))
+
+(defun mk-lookup-lib-token (lib-token)
+  (save-excursion
+    (goto-char (point-min))
+    (re-search-forward (concat "^" lib-token " = \"\\(.*\\)\";"))
+    (match-string-no-properties 1)))
+
+(defun mk-start-new-stanza ()
+  (interactive)
+  (save-excursion
+    (re-search-forward "$address_location = \\($lib_.*\\);")
+    (let* ((lib-token (match-string 1))
+           (lib-name (mk-lookup-lib-token lib-token)))
+      (re-search-backward "\\(//.*\\)$")
+      (let ((comment (match-string 1)))
+        (search-backward "$library_ip_address_ranges = array(")
+        (re-search-forward "^\);")
+        (re-search-backward "\)[^;]")
+        (end-of-line)
+        (push-mark (point))
+        (insert (concat ",\n"
+                        comment
+                        "\n"
+                        "\""
+                        lib-name
+                        "\" => array(\n\n)"))
+        (indent-region (mark) (point))
+        (ignore)))))
