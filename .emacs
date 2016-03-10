@@ -49,6 +49,7 @@
 (setq magit-auto-revert-mode nil)
 (setq magit-last-seen-setup-instructions "1.4.0")
 (global-set-key (kbd "C-x g") 'magit-status)
+(setq vc-follow-symlinks t)
 
 (defun jta-reformat-xml ()
   "Reformats xml to make it readable (respects current selection)."
@@ -138,7 +139,7 @@
   "Set up directories for Whitaker's WORDS development"
   (interactive)
   (progn
-    (setq default-directory "~/Src/whitakers-words/src/commands/")
+    (setq default-directory "/home/mk270/Src/whitakers-words/src/commands/")
     (setq compile-command "cd ~/Src/whitakers-words && gprbuild -Pwords")))
 
 ; enable single-keystroke kill buffer
