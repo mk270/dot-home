@@ -97,3 +97,20 @@ snmr () {
 wt () {
 	while true; do "$@"; sleep 1; done
 }
+
+pchi () {
+	ping -n chi
+}
+
+add-project () {
+	sqlite3 ~/.projects.db "INSERT INTO project (description) VALUES ('$*');"
+}
+
+list-projects () {
+	sqlite3 ~/.projects.db "SELECT description FROM project;"
+}
+
+eurosceptics () {
+	palemoon https://www.twitter.com/ &
+}
+
