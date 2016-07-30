@@ -115,7 +115,7 @@ if [ -d "$HOME/npm/bin" ] ; then
 fi
 
 #if [ -d "/usr/local/gnat2014/bin" ] ; then
-#    PATH="${PATH}:/usr/local/gnat2014/bin"
+#    PATH="/usr/local/gnat2014/bin:${PATH}"
 #fi
 
 if [ -d "/usr/local/go/bin" ]; then
