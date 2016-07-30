@@ -114,3 +114,6 @@ eurosceptics () {
 	palemoon https://www.twitter.com/ &
 }
 
+sane-record () {
+    arecord -f cd -d 10 "$@"
+}
