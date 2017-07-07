@@ -102,9 +102,10 @@ fi
 #	. /etc/bash_completion
 #fi
 
-if [ -f /usr/local/bin/opam ]; then
+if [ -f /usr/bin/opam -a -f ~/.opam/config ]; then
     eval `opam config env`
 fi 
+. /home/mk270/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
@@ -139,3 +140,16 @@ export PATH=${PATH}:${GOPATH}/bin
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /home/mk270/Src/google-cloud-sdk/path.bash.inc ]; then
+  source '/home/mk270/Src/google-cloud-sdk/path.bash.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+#if [ -f /home/mk270/Src/google-cloud-sdk/completion.bash.inc ]; then
+#  source '/home/mk270/Src/google-cloud-sdk/completion.bash.inc'
+#fi
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

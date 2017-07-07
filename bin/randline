@@ -1,20 +1,13 @@
-#!/usr/bin/perl
+#!/usr/bin/env python
 
-# a pipe; take STDIN and print it out again, randomlised by lines
+import sys
+import random
 
-( @lines = <> );
+def run():
+    lines = sys.stdin.readlines()
+    random.shuffle(lines)
+    for line in lines:
+        sys.stdout.write(line)
 
-srand;
-
-$total = ( @lines );
-
-foreach my $x ( 0 .. $#lines )
-{
-        my( $a ) = rand( $total );
-        my( $tmp ) = $lines[ $x ];
-        $lines[ $x ] = $lines[ $a ];
-        $lines[ $a ] = $tmp;
-}
-
-print @lines;
-
+if __name__ == '__main__':
+    run()

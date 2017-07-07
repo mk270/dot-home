@@ -1,11 +1,6 @@
 .alias
 .bashrc
 .bash_logout
-.emacs
-.emacs.d/mk-utils.el
-.emacs.d/mk-dired-apply.el
-.emacs.d/column-marker.el
-.emacs.d/mk-md-to-reveal.el
 .stash-bash
 data/md-to-reveal.inc
 bin
